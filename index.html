@@ -1,29 +1,884 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forastero en América 2027</title>
-    <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            text-align: center;
+    <title>Forastero en América | Ushuaia a Alaska en un Suzuki ST90 (1979)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Montserrat:wght@400;500;600;700;800&family=Special+Elite&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            terracotta: '#C85A32',
+                            terracottaDark: '#9E3F1B',
+                            ochre: '#D99B26',
+                            sand: '#F4E8C1',
+                            olive: '#4A5D36',
+                            oliveDark: '#2C3A1D',
+                            vintageBg: '#FAF6ED',
+                            cardBg: '#FFFDF9',
+                            darkText: '#2B2523'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        vintage: ['Special Elite', 'cursive'],
+                        hand: ['Caveat', 'cursive']
+                    }
+                }
+            }
         }
-        h1 { color: #f59e0b; font-size: 2.5rem; margin-bottom: 0.5rem; }
-        p { font-size: 1.2rem; color: #94a3b8; }
+    </script>
+    <style>
+        .vintage-shadow {
+            box-shadow: 5px 5px 0px 0px rgba(74, 93, 54, 0.8);
+        }
+        .vintage-shadow-orange {
+            box-shadow: 5px 5px 0px 0px #C85A32;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(#C85A32 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 8px;
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F4E8C1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C85A32;
+            border-radius: 4px;
+        }
     </style>
 </head>
-<body>
-    <div>
-        <h1>Forastero en América 2027 🚐💨</h1>
-        <p>Próximamente... Expedición desde Sudamérica hasta Alaska.</p>
+<body class="bg-brand-vintageBg text-brand-darkText font-sans selection:bg-brand-ochre selection:text-white">
+
+    <!-- Navigation Header -->
+    <nav class="sticky top-0 z-50 bg-brand-vintageBg/95 backdrop-blur-md border-b-2 border-brand-oliveDark/20 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-full bg-brand-terracotta text-white flex items-center justify-center font-vintage font-bold text-xl border-2 border-brand-oliveDark group-hover:rotate-12 transition-transform">
+                    F
+                </div>
+                <div>
+                    <span class="font-vintage text-xl font-bold tracking-wider text-brand-darkText block leading-none">FORASTERO</span>
+                    <span class="text-xs font-semibold text-brand-terracotta tracking-widest uppercase">En América</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-6 font-medium text-sm">
+                <a href="#ruta" class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-map-location-dot text-brand-ochre mr-1"></i> La Ruta</a>
+                <a href="#vehiculo" class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-van-shuttle text-brand-ochre mr-1"></i> El Suzuki ST90</a>
+                <a href="#bitacora" class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-book-open text-brand-ochre mr-1"></i> Bitácora</a>
+                <a href="#apoyar" class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-gas-pump text-brand-ochre mr-1"></i> Invitar Nafta</a>
+            </div>
+
+            <div class="hidden md:flex items-center gap-3">
+                <a href="#apoyar" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white font-bold px-4 py-2 rounded-lg vintage-shadow text-xs uppercase tracking-wider transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-heart mr-1"></i> Apoyar
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobileMenuBtn" class="md:hidden text-2xl text-brand-darkText focus:outline-none p-1">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Nav -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-sand/90 backdrop-blur-md mt-3 p-4 rounded-xl border-2 border-brand-oliveDark/20 flex flex-col gap-3 font-medium">
+            <a href="#ruta" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-map-location-dot text-brand-terracotta w-6"></i> La Ruta Panamericana</a>
+            <a href="#vehiculo" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-van-shuttle text-brand-terracotta w-6"></i> El Suzuki ST90</a>
+            <a href="#bitacora" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-book-open text-brand-terracotta w-6"></i> Bitácora de Viaje</a>
+            <a href="#apoyar" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-gas-pump text-brand-terracotta w-6"></i> Apoyar la Expedición</a>
+            <a href="#contacto" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-paper-plane text-brand-terracotta w-6"></i> Contacto</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative bg-gradient-to-b from-brand-sand/60 to-brand-vintageBg pt-12 pb-20 px-4 overflow-hidden border-b-2 border-brand-olive/10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left z-10">
+                <div class="inline-flex items-center gap-2 bg-brand-sand border-2 border-brand-oliveDark px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-brand-oliveDark shadow-sm">
+                    <span class="w-2.5 h-2.5 rounded-full bg-brand-terracotta animate-ping"></span>
+                    Expedición Overland Transcontinental
+                </div>
+                
+                <h1 class="font-vintage text-4xl sm:text-6xl xl:text-7xl font-extrabold text-brand-darkText leading-tight">
+                    FORASTERO <br><span class="text-brand-terracotta underline decoration-brand-ochre decoration-wavy">EN AMÉRICA</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl text-stone-700 font-medium max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Un viaje épico uniendo <span class="font-bold text-brand-oliveDark">Ushuaia (El fin del mundo)</span> hasta <span class="font-bold text-brand-oliveDark">Alaska (EE. UU.)</span> a bordo de un legendario e indomable Suzuki ST90 del año 1979.
+                </p>
+
+                <div class="flex flex-wrap gap-4 justify-center lg:justify-start pt-2">
+                    <a href="#ruta" class="bg-brand-olive hover:bg-brand-oliveDark text-white px-6 py-3.5 rounded-xl font-bold vintage-shadow flex items-center gap-2 transition-all transform hover:-translate-y-1">
+                        <i class="fa-solid fa-compass text-brand-ochre text-lg"></i> Explorar la Ruta
+                    </a>
+                    <a href="#apoyar" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white px-6 py-3.5 rounded-xl font-bold vintage-shadow flex items-center gap-2 transition-all transform hover:-translate-y-1">
+                        <i class="fa-solid fa-gas-pump text-brand-sand text-lg"></i> Regalar Combustible
+                    </a>
+                </div>
+
+                <!-- Live Metrics Grid -->
+                <div class="grid grid-cols-3 gap-3 pt-6 max-w-lg mx-auto lg:mx-0">
+                    <div class="bg-brand-cardBg border-2 border-brand-oliveDark/20 p-3 rounded-xl text-center shadow-sm">
+                        <span id="counterKm" class="block font-vintage text-2xl sm:text-3xl font-bold text-brand-terracotta">12,480</span>
+                        <span class="text-xs text-stone-600 font-semibold uppercase">Km Recorridos</span>
+                    </div>
+                    <div class="bg-brand-cardBg border-2 border-brand-oliveDark/20 p-3 rounded-xl text-center shadow-sm">
+                        <span id="counterCountries" class="block font-vintage text-2xl sm:text-3xl font-bold text-brand-olive">7</span>
+                        <span class="text-xs text-stone-600 font-semibold uppercase">Países Cruzados</span>
+                    </div>
+                    <div class="bg-brand-cardBg border-2 border-brand-oliveDark/20 p-3 rounded-xl text-center shadow-sm">
+                        <span id="counterDays" class="block font-vintage text-2xl sm:text-3xl font-bold text-brand-ochre">142</span>
+                        <span class="text-xs text-stone-600 font-semibold uppercase">Días en Ruta</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Media Visual -->
+            <div class="lg:col-span-5 relative">
+                <div class="relative mx-auto max-w-md lg:max-w-none">
+                    <!-- Retro Polaroid Frame -->
+                    <div class="bg-white p-4 pb-12 rounded-lg border-4 border-brand-oliveDark vintage-shadow transform -rotate-2 hover:rotate-0 transition-transform duration-300">
+                        <div class="relative bg-stone-800 rounded overflow-hidden aspect-[4/3] flex items-center justify-center group">
+                            <!-- Visual Graphic representing Suzuki ST90 Van -->
+                            <svg class="w-full h-full object-cover" viewBox="0 0 500 375" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="500" height="375" fill="#EAD8B1"/>
+                                <!-- Mountains Background -->
+                                <polygon points="0,280 120,160 250,280" fill="#7D9D63" opacity="0.7"/>
+                                <polygon points="150,280 320,120 480,280" fill="#4A5D36" opacity="0.9"/>
+                                <polygon points="280,280 380,180 500,280" fill="#2C3A1D"/>
+                                <polygon points="320,120 340,140 300,140" fill="#FFF"/>
+                                <!-- Sun -->
+                                <circle cx="100" cy="90" r="45" fill="#D99B26" opacity="0.8"/>
+                                <!-- Road -->
+                                <polygon points="0,375 200,260 250,260 500,375" fill="#4A4441"/>
+                                <line x1="225" y1="260" x2="250" y2="375" stroke="#F4E8C1" stroke-width="4" stroke-dasharray="10,10"/>
+                                
+                                <!-- Stylized Vintage Van Illustration (Suzuki Carry/ST90 Style) -->
+                                <g transform="translate(140, 180) scale(0.85)">
+                                    <!-- Roof Rack & Luggage -->
+                                    <rect x="55" y="15" width="150" height="12" fill="#2B2523" rx="2"/>
+                                    <rect x="65" y="2" width="40" height="15" fill="#C85A32" rx="3"/>
+                                    <rect x="110" y="-3" width="50" height="20" fill="#D99B26" rx="2"/>
+                                    <circle cx="170" cy="8" r="10" fill="#4A5D36"/>
+                                    
+                                    <!-- Main Body -->
+                                    <path d="M 40,30 L 210,30 Q 225,30 225,45 L 225,110 Q 225,120 210,120 L 40,120 Q 30,120 30,105 L 30,45 Q 30,30 40,30 Z" fill="#D99B26" stroke="#2B2523" stroke-width="4"/>
+                                    <!-- Top Half Color -->
+                                    <path d="M 40,30 L 210,30 Q 225,30 225,45 L 225,70 L 30,70 L 30,45 Q 30,30 40,30 Z" fill="#FAF6ED"/>
+                                    
+                                    <!-- Retro Stripes -->
+                                    <rect x="30" y="70" width="195" height="8" fill="#C85A32"/>
+                                    <rect x="30" y="78" width="195" height="5" fill="#4A5D36"/>
+
+                                    <!-- Windows -->
+                                    <rect x="45" y="38" width="50" height="28" rx="4" fill="#6B8E9F" stroke="#2B2523" stroke-width="3"/>
+                                    <rect x="105" y="38" width="50" height="28" rx="4" fill="#6B8E9F" stroke="#2B2523" stroke-width="3"/>
+                                    <rect x="165" y="38" width="45" height="28" rx="4" fill="#6B8E9F" stroke="#2B2523" stroke-width="3"/>
+
+                                    <!-- Headlight & Grille -->
+                                    <circle cx="36" cy="90" r="8" fill="#FFFDF9" stroke="#2B2523" stroke-width="2"/>
+                                    <rect x="30" y="98" width="10" height="12" fill="#C85A32" rx="2"/>
+
+                                    <!-- Wheels -->
+                                    <circle cx="75" cy="120" r="22" fill="#2B2523"/>
+                                    <circle cx="75" cy="120" r="12" fill="#D9D9D9" stroke="#2B2523" stroke-width="2"/>
+                                    <circle cx="180" cy="120" r="22" fill="#2B2523"/>
+                                    <circle cx="180" cy="120" r="12" fill="#D9D9D9" stroke="#2B2523" stroke-width="2"/>
+                                </g>
+                            </svg>
+                            <div class="absolute top-3 right-3 bg-brand-terracotta text-white font-vintage px-3 py-1 text-xs rounded border border-white">
+                                Ushuaia ➔ Alaska
+                            </div>
+                        </div>
+                        <p class="font-hand text-2xl text-center text-stone-800 mt-4 leading-none">
+                            "El Forastero" - Suzuki ST90 (1979) en plena Patagonia
+                        </p>
+                    </div>
+                    
+                    <!-- Decorative Badge -->
+                    <div class="absolute -bottom-6 -right-4 bg-brand-ochre text-white p-4 rounded-full border-2 border-brand-oliveDark shadow-lg font-vintage text-center w-24 h-24 flex flex-col items-center justify-center rotate-12">
+                        <span class="text-xs uppercase font-sans font-bold">Capacidad</span>
+                        <span class="text-xl font-bold leading-none">797 cc</span>
+                        <span class="text-[10px]">¡Puro Aguantar!</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Route Map & Interactive Timeline Section -->
+    <section id="ruta" class="py-16 px-4 bg-brand-vintageBg relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-terracotta font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-route"></i> Travesía Panamericana</span>
+                <h2 class="font-vintage text-3xl sm:text-5xl font-bold text-brand-darkText mt-1">El Mapa de la Aventura</h2>
+                <p class="text-stone-600 mt-3 text-base">
+                    Más de 30.000 kilómetros cruzando el continente americano de extremo a extremo. Haz clic en cada etapa para conocer el recorrido.
+                </p>
+            </div>
+
+            <!-- Stage Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterStage('all')" class="stage-btn active px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-brand-olive text-white border-2 border-brand-oliveDark shadow">
+                    Todas las Etapas
+                </button>
+                <button onclick="filterStage('sur')" class="stage-btn px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-white text-stone-700 border-2 border-stone-300 hover:border-brand-terracotta">
+                    1. Sudamérica
+                </button>
+                <button onclick="filterStage('centro')" class="stage-btn px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-white text-stone-700 border-2 border-stone-300 hover:border-brand-terracotta">
+                    2. Centroamérica
+                </button>
+                <button onclick="filterStage('norte')" class="stage-btn px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-white text-stone-700 border-2 border-stone-300 hover:border-brand-terracotta">
+                    3. Norteamérica
+                </button>
+                <button onclick="filterStage('alaska')" class="stage-btn px-4 py-2 rounded-xl text-xs font-bold uppercase transition-all bg-white text-stone-700 border-2 border-stone-300 hover:border-brand-terracotta">
+                    4. El Gran Final (Alaska)
+                </button>
+            </div>
+
+            <!-- Route Timeline Cards Grid -->
+            <div id="timelineContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Stage 1 -->
+                <div class="stage-card sur bg-brand-cardBg border-2 border-brand-oliveDark/30 rounded-2xl p-5 relative vintage-shadow transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-sand border border-brand-ochre px-2.5 py-1 rounded-md font-vintage text-xs font-bold text-brand-oliveDark">
+                            Etapa 01
+                        </span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Completado <i class="fa-solid fa-check text-[10px]"></i></span>
+                    </div>
+                    <h3 class="font-vintage text-xl font-bold text-brand-darkText">Fin del Mundo a los Andes</h3>
+                    <p class="text-xs font-bold text-brand-terracotta uppercase tracking-wider mb-2">Ushuaia ➔ Santiago ➔ Cusco</p>
+                    <p class="text-stone-600 text-sm mb-4">
+                        Arranque épico en Tierra del Fuego. Carreteras australes, estepas patagónicas y subidas sobre los 4.000m de altura exigiendo el motor ST90.
+                    </p>
+                    <div class="pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                        <span><i class="fa-solid fa-road text-brand-ochre"></i> ~7,500 km</span>
+                        <span><i class="fa-solid fa-flag text-brand-terracotta"></i> 4 Países</span>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="stage-card sur bg-brand-cardBg border-2 border-brand-terracotta rounded-2xl p-5 relative vintage-shadow-orange transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-brand-terracotta text-white px-2.5 py-1 rounded-md font-vintage text-xs font-bold">
+                            Etapa 02 (Actual)
+                        </span>
+                        <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded-full animate-pulse">En Marcha <i class="fa-solid fa-compass"></i></span>
+                    </div>
+                    <h3 class="font-vintage text-xl font-bold text-brand-darkText">Ecuador y Colombia</h3>
+                    <p class="text-xs font-bold text-brand-terracotta uppercase tracking-wider mb-2">Quito ➔ Bogotá ➔ Cartagena</p>
+                    <p class="text-stone-600 text-sm mb-4">
+                        Curvas del Caribe, clima tropical y cruce del Tapón del Darién (fase logística marítima para pasar el Suzuki hacia Panamá).
+                    </p>
+                    <div class="pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                        <span><i class="fa-solid fa-road text-brand-ochre"></i> ~5,000 km</span>
+                        <span><i class="fa-solid fa-flag text-brand-terracotta"></i> 3 Países</span>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="stage-card centro bg-brand-cardBg border-2 border-brand-oliveDark/30 rounded-2xl p-5 relative vintage-shadow opacity-90 transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-stone-200 border border-stone-400 px-2.5 py-1 rounded-md font-vintage text-xs font-bold text-stone-700">
+                            Etapa 03
+                        </span>
+                        <span class="text-xs bg-stone-100 text-stone-600 font-bold px-2 py-0.5 rounded-full">Próximamente</span>
+                    </div>
+                    <h3 class="font-vintage text-xl font-bold text-brand-darkText">Ruta Maya & México</h3>
+                    <p class="text-xs font-bold text-brand-terracotta uppercase tracking-wider mb-2">Panamá ➔ Guatemala ➔ CDMX</p>
+                    <p class="text-stone-600 text-sm mb-4">
+                        Volcanes, selva tropical, cultura milenaria y gastronomía mexicana antes de encarar el desierto del norte.
+                    </p>
+                    <div class="pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                        <span><i class="fa-solid fa-road text-brand-ochre"></i> ~6,500 km</span>
+                        <span><i class="fa-solid fa-flag text-brand-terracotta"></i> 7 Países</span>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="stage-card norte alaska bg-brand-cardBg border-2 border-brand-oliveDark/30 rounded-2xl p-5 relative vintage-shadow opacity-90 transition-all hover:-translate-y-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="bg-stone-200 border border-stone-400 px-2.5 py-1 rounded-md font-vintage text-xs font-bold text-stone-700">
+                            Etapa 04
+                        </span>
+                        <span class="text-xs bg-stone-100 text-stone-600 font-bold px-2 py-0.5 rounded-full">Objetivo Final</span>
+                    </div>
+                    <h3 class="font-vintage text-xl font-bold text-brand-darkText">Alaska & Prudhoe Bay</h3>
+                    <p class="text-xs font-bold text-brand-terracotta uppercase tracking-wider mb-2">EE. UU. ➔ Canadá ➔ Prudhoe Bay</p>
+                    <p class="text-stone-600 text-sm mb-4">
+                        La Carretera de Alaska (AlCan Highway), glaciares y tundras árticas hasta conquistar el punto más septentrional accesible.
+                    </p>
+                    <div class="pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                        <span><i class="fa-solid fa-road text-brand-ochre"></i> ~11,000 km</span>
+                        <span><i class="fa-solid fa-flag text-brand-terracotta"></i> 2 Países</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Route Progress Bar -->
+            <div class="mt-12 bg-brand-sand border-2 border-brand-oliveDark p-6 rounded-2xl vintage-shadow">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-vintage font-bold text-lg text-brand-darkText"><i class="fa-solid fa-bars-progress text-brand-terracotta mr-2"></i>Progreso Total Estimado de la Travesía</span>
+                    <span class="font-bold text-brand-terracotta font-vintage text-xl">41%</span>
+                </div>
+                <div class="w-full bg-stone-200 rounded-full h-5 border-2 border-brand-oliveDark overflow-hidden p-0.5">
+                    <div class="bg-gradient-to-r from-brand-ochre via-brand-terracotta to-brand-olive h-full rounded-full transition-all duration-1000" style="width: 41%;"></div>
+                </div>
+                <div class="flex justify-between text-xs font-bold text-stone-600 mt-2">
+                    <span>📍 Ushuaia, Argentina (Km 0)</span>
+                    <span class="hidden sm:inline">📍 Bogotá (En Curso)</span>
+                    <span>🏁 Prudhoe Bay, Alaska (~30,000+ Km)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicle Specs Section ("El Forastero") -->
+    <section id="vehiculo" class="py-16 px-4 bg-brand-sand/40 border-y-2 border-brand-olive/10 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Vehicle Story & Specs -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <span class="text-brand-terracotta font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-truck-monster"></i> El Alma de la Expedición</span>
+                        <h2 class="font-vintage text-3xl sm:text-5xl font-bold text-brand-darkText mt-1">Suzuki ST90 (Año 1979)</h2>
+                        <p class="text-stone-700 mt-3 text-base leading-relaxed">
+                            Bautizado afectuosamente como <strong>"El Forastero"</strong>, este diminuto utilitario japonés de la categoría Kei Truck/Van nació a finales de los 70s para la ciudad, pero hoy está desafiando los desiertos, selvas y montañas de toda América.
+                        </p>
+                    </div>
+
+                    <!-- Interactive Specs Selector -->
+                    <div class="bg-white rounded-2xl border-2 border-brand-oliveDark p-6 vintage-shadow">
+                        <div class="flex border-b border-stone-200 gap-4 mb-4 overflow-x-auto pb-2">
+                            <button onclick="switchTab('mecanica')" id="tab-mecanica" class="tab-btn font-vintage font-bold text-sm text-brand-terracotta border-b-2 border-brand-terracotta pb-2 whitespace-nowrap">
+                                <i class="fa-solid fa-gears mr-1"></i> Ficha Técnica
+                            </button>
+                            <button onclick="switchTab('camper')" id="tab-camper" class="tab-btn font-vintage font-bold text-sm text-stone-500 border-b-2 border-transparent pb-2 hover:text-brand-terracotta whitespace-nowrap">
+                                <i class="fa-solid fa-campground mr-1"></i> Modificación Camper
+                            </button>
+                            <button onclick="switchTab('curiosidades')" id="tab-curiosidades" class="tab-btn font-vintage font-bold text-sm text-stone-500 border-b-2 border-transparent pb-2 hover:text-brand-terracotta whitespace-nowrap">
+                                <i class="fa-solid fa-lightbulb mr-1"></i> Datos Curiosos
+                            </button>
+                        </div>
+
+                        <!-- Tab Content 1: Ficha Tecnica -->
+                        <div id="content-mecanica" class="tab-content space-y-3">
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="bg-brand-vintageBg p-3 rounded-lg border border-stone-200">
+                                    <span class="text-xs text-stone-500 block font-semibold">Motorización</span>
+                                    <span class="font-bold text-brand-darkText">F10A 4 Cilindros en línea (797 cc)</span>
+                                </div>
+                                <div class="bg-brand-vintageBg p-3 rounded-lg border border-stone-200">
+                                    <span class="text-xs text-stone-500 block font-semibold">Potencia Orig.</span>
+                                    <span class="font-bold text-brand-darkText">~40 CV / Refrigerado por agua</span>
+                                </div>
+                                <div class="bg-brand-vintageBg p-3 rounded-lg border border-stone-200">
+                                    <span class="text-xs text-stone-500 block font-semibold">Transmisión</span>
+                                    <span class="font-bold text-brand-darkText">Manual de 4 velocidades + Reversa</span>
+                                </div>
+                                <div class="bg-brand-vintageBg p-3 rounded-lg border border-stone-200">
+                                    <span class="text-xs text-stone-500 block font-semibold">Tracción / Frenos</span>
+                                    <span class="font-bold text-brand-darkText">Trasera (RWD) / Tambores</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tab Content 2: Camper -->
+                        <div id="content-camper" class="tab-content hidden space-y-3">
+                            <ul class="text-sm space-y-2 text-stone-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-bed text-brand-terracotta mt-1"></i>
+                                    <span><strong>Cama Plegable:</strong> Diseño a medida de 1.85m x 1.10m aprovechando el espacio interior.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-solar-panel text-brand-terracotta mt-1"></i>
+                                    <span><strong>Energía Solar:</strong> Panel solar flexible de 120W en el techo con batería auxiliar de gel.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-faucet-drip text-brand-terracotta mt-1"></i>
+                                    <span><strong>Depósito de Agua:</strong> Tanque de 30 litros con bomba eléctrica de 12V para cocina portátil.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-toolbox text-brand-terracotta mt-1"></i>
+                                    <span><strong>Parrilla de Techo:</strong> Portaequipajes reforzado para 2 ruedas de auxilio y bidones Jerrycan.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Tab Content 3: Curiosidades -->
+                        <div id="content-curiosidades" class="tab-content hidden space-y-3">
+                            <p class="text-sm text-stone-700 leading-relaxed">
+                                💡 En 1979 nadie imaginó que una van pensada para reparto urbano en calles estrechas terminaría subiendo los Andes a más de 4.500 metros sobre el nivel del mar. Su simpleza mecánica (sin electrónica compleja) permite reparar prácticamente cualquier avería al borde del camino con un kit básico de herramientas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Vehicle Card Preview -->
+                <div class="lg:col-span-5">
+                    <div class="bg-brand-cardBg border-4 border-brand-oliveDark p-6 rounded-3xl vintage-shadow text-center relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-brand-ochre text-white font-vintage text-xs px-4 py-1 rounded-bl-xl font-bold uppercase tracking-wider">
+                            Legendario '79
+                        </div>
+
+                        <div class="my-6 py-8 px-4 bg-brand-sand/50 rounded-2xl border-2 border-dashed border-brand-olive/30 flex flex-col items-center justify-center">
+                            <i class="fa-solid fa-van-shuttle text-7xl text-brand-terracotta mb-3 animate-bounce"></i>
+                            <span class="font-vintage text-2xl font-bold text-brand-darkText">"EL FORASTERO"</span>
+                            <span class="text-xs text-stone-600 font-semibold">1979 Suzuki Carry ST90 Series</span>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-left">
+                            <div class="bg-brand-vintageBg p-3 rounded-xl border border-stone-200">
+                                <span class="text-[10px] uppercase text-stone-500 font-bold block">Consumo Promedio</span>
+                                <span class="font-vintage font-bold text-brand-olive text-lg">14 km / Litro</span>
+                            </div>
+                            <div class="bg-brand-vintageBg p-3 rounded-xl border border-stone-200">
+                                <span class="text-[10px] uppercase text-stone-500 font-bold block">Velocidad de Ruta</span>
+                                <span class="font-vintage font-bold text-brand-terracotta text-lg">70 - 80 km/h</span>
+                            </div>
+                        </div>
+
+                        <button onclick="triggerHonk()" class="w-full mt-5 bg-brand-ochre hover:bg-amber-600 text-white font-vintage text-base py-3 rounded-xl font-bold transition-transform active:scale-95 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-bullhorn"></i> ¡Tocar la Bocina del Forastero!
+                        </button>
+                        <p id="honkMessage" class="text-xs font-bold text-brand-terracotta mt-2 h-4 transition-opacity opacity-0">
+                            🔊 ¡MIIIP MIIIP! (Sonido de 1979)
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Journal / Bitácora Section -->
+    <section id="bitacora" class="py-16 px-4 bg-brand-vintageBg">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-terracotta font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-feather-pointed"></i> Historias de la Carretera</span>
+                    <h2 class="font-vintage text-3xl sm:text-5xl font-bold text-brand-darkText mt-1">Bitácora del Forastero</h2>
+                </div>
+                
+                <!-- Category Filter -->
+                <div class="mt-4 md:mt-0 flex gap-2 overflow-x-auto pb-2">
+                    <button onclick="filterBlog('all')" class="blog-tab active text-xs font-bold px-3 py-2 rounded-lg bg-brand-olive text-white">Todos</button>
+                    <button onclick="filterBlog('mecanica')" class="blog-tab text-xs font-bold px-3 py-2 rounded-lg bg-stone-200 text-stone-700 hover:bg-brand-sand">🛠️ Taller Rutenio</button>
+                    <button onclick="filterBlog('paisajes')" class="blog-tab text-xs font-bold px-3 py-2 rounded-lg bg-stone-200 text-stone-700 hover:bg-brand-sand">🏔️ Paisajes</button>
+                    <button onclick="filterBlog('gente')" class="blog-tab text-xs font-bold px-3 py-2 rounded-lg bg-stone-200 text-stone-700 hover:bg-brand-sand">🤝 Gente de la Ruta</button>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Post 1 -->
+                <article class="blog-post mecanica bg-brand-cardBg border-2 border-brand-oliveDark/20 rounded-2xl overflow-hidden vintage-shadow flex flex-col">
+                    <div class="h-48 bg-stone-300 relative overflow-hidden flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=800&q=80');">
+                        <span class="absolute top-3 left-3 bg-brand-terracotta text-white font-vintage text-xs px-2.5 py-1 rounded">
+                            Tierra del Fuego, Arg.
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase text-brand-ochre tracking-wider">Mecánica & Ruta • 12 Oct</span>
+                            <h3 class="font-vintage text-xl font-bold text-brand-darkText mt-1 hover:text-brand-terracotta transition-colors cursor-pointer">
+                                Reparando el carburador a 3.800m de altura
+                            </h3>
+                            <p class="text-stone-600 text-sm mt-2">
+                                La falta de oxígeno en los Andes nos hizo ajustar la mezcla aire-combustible en pleno paso fronterizo. ¡El ST90 respondió como un campeón!
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                            <span><i class="fa-regular fa-clock"></i> Lectura 4 min</span>
+                            <button onclick="openModal('Reparando el carburador', 'La falta de oxígeno en los Andes nos hizo ajustar la mezcla aire-combustible en pleno paso fronterizo. El ST90 respondió como un campeón gracias al esfuerzo colectivo y la amabilidad de un camionero local que nos prestó una llave de 10mm que habíamos perdido.')" class="text-brand-terracotta font-bold hover:underline">
+                                Leer Entrada ➔
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-post paisajes bg-brand-cardBg border-2 border-brand-oliveDark/20 rounded-2xl overflow-hidden vintage-shadow flex flex-col">
+                    <div class="h-48 bg-stone-300 relative overflow-hidden flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');">
+                        <span class="absolute top-3 left-3 bg-brand-olive text-white font-vintage text-xs px-2.5 py-1 rounded">
+                            Salar de Uyuni, Bolivia
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase text-brand-ochre tracking-wider">Paisajes • 28 Nov</span>
+                            <h3 class="font-vintage text-xl font-bold text-brand-darkText mt-1 hover:text-brand-terracotta transition-colors cursor-pointer">
+                                Un espejo blanco que parecía no tener fin
+                            </h3>
+                            <p class="text-stone-600 text-sm mt-2">
+                                Acampar en la inmensidad del salar con el Suzuki ST90 transformado en nuestro pequeño refugio bajo las estrellas.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                            <span><i class="fa-regular fa-clock"></i> Lectura 3 min</span>
+                            <button onclick="openModal('Un espejo blanco', 'Acampar en la inmensidad del salar con el Suzuki ST90 transformado en nuestro pequeño refugio bajo las estrellas fue uno de los momentos más mágicos. Lavar el chasis al día siguiente para quitar la sal fue una odisea aparte.')" class="text-brand-terracotta font-bold hover:underline">
+                                Leer Entrada ➔
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-post gente bg-brand-cardBg border-2 border-brand-oliveDark/20 rounded-2xl overflow-hidden vintage-shadow flex flex-col">
+                    <div class="h-48 bg-stone-300 relative overflow-hidden flex items-center justify-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1526772662000-3f88f10405ff?auto=format&fit=crop&w=800&q=80');">
+                        <span class="absolute top-3 left-3 bg-brand-ochre text-white font-vintage text-xs px-2.5 py-1 rounded">
+                            Arequipa, Perú
+                        </span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[11px] font-bold uppercase text-brand-ochre tracking-wider">Gente de Ruta • 15 Ene</span>
+                            <h3 class="font-vintage text-xl font-bold text-brand-darkText mt-1 hover:text-brand-terracotta transition-colors cursor-pointer">
+                                El abuelo mecánico que tuvo el mismo Suzuki en 1982
+                            </h3>
+                            <p class="text-stone-600 text-sm mt-2">
+                                Don Mateo vio pasar El Forastero y nos hizo señas para parar. Nos invitó un almuerzo inolvidable y nos regaló repuestos originales.
+                            </p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-stone-200 flex justify-between items-center text-xs font-semibold text-stone-500">
+                            <span><i class="fa-regular fa-clock"></i> Lectura 5 min</span>
+                            <button onclick="openModal('El abuelo mecánico', 'Don Mateo vio pasar El Forastero y nos hizo señas para parar. Recordó con lágrimas cómo su primer trabajo fue repartiendo pan en uno idéntico en los 80s. Nos regaló una platina original de repuesto que guardaba como tesoro.')" class="text-brand-terracotta font-bold hover:underline">
+                                Leer Entrada ➔
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Support / Sponsors Section ("Invitar Nafta") -->
+    <section id="apoyar" class="py-16 px-4 bg-brand-sand/60 border-t-2 border-brand-olive/10 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-terracotta font-bold text-sm tracking-widest uppercase"><i class="fa-solid fa-hand-holding-heart"></i> Mueve la Expedición</span>
+                <h2 class="font-vintage text-3xl sm:text-5xl font-bold text-brand-darkText mt-1">¡Súmate al Combustible del Forastero!</h2>
+                <p class="text-stone-700 mt-3 text-base">
+                    Cada kilómetro recorrido es posible gracias a la gente linda que encontramos en el camino y a quienes nos apoyan virtualmente.
+                </p>
+            </div>
+
+            <!-- Support Tiers -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                
+                <!-- Option 1 -->
+                <div class="bg-brand-cardBg border-2 border-brand-oliveDark/30 rounded-2xl p-6 vintage-shadow text-center flex flex-col justify-between hover:border-brand-terracotta transition-colors">
+                    <div>
+                        <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto text-brand-ochre text-2xl mb-4">
+                            <i class="fa-solid fa-mug-hot"></i>
+                        </div>
+                        <h3 class="font-vintage text-xl font-bold text-brand-darkText">Un Café de Ruta</h3>
+                        <p class="font-vintage text-2xl font-bold text-brand-terracotta my-2">$3 USD</p>
+                        <p class="text-stone-600 text-sm">
+                            Nos da energía para editar los videos de la semana y planificar la siguiente frontera.
+                        </p>
+                    </div>
+                    <button onclick="supportAlert('Café de Ruta')" class="mt-6 w-full bg-brand-ochre hover:bg-amber-600 text-white font-bold py-2.5 rounded-xl transition-all">
+                        Invitar un Café
+                    </button>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="bg-brand-cardBg border-2 border-brand-terracotta rounded-2xl p-6 vintage-shadow-orange text-center flex flex-col justify-between relative transform md:-translate-y-2">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-terracotta text-white font-vintage text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+                        Más Popular
+                    </span>
+                    <div>
+                        <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto text-brand-terracotta text-2xl mb-4">
+                            <i class="fa-solid fa-gas-pump"></i>
+                        </div>
+                        <h3 class="font-vintage text-xl font-bold text-brand-darkText">Tanque Lleno de Nafta</h3>
+                        <p class="font-vintage text-2xl font-bold text-brand-terracotta my-2">$25 USD</p>
+                        <p class="text-stone-600 text-sm">
+                            Financia aproximadamente 350 km de travesía. Tu nombre aparecerá en los créditos del próximo episodio.
+                        </p>
+                    </div>
+                    <button onclick="supportAlert('Tanque de Nafta')" class="mt-6 w-full bg-brand-terracotta hover:bg-brand-terracottaDark text-white font-bold py-2.5 rounded-xl transition-all">
+                        Donar Combustible
+                    </button>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="bg-brand-cardBg border-2 border-brand-oliveDark/30 rounded-2xl p-6 vintage-shadow text-center flex flex-col justify-between hover:border-brand-olive transition-colors">
+                    <div>
+                        <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto text-brand-olive text-2xl mb-4">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3 class="font-vintage text-xl font-bold text-brand-darkText">Repuesto o Mantenimiento</h3>
+                        <p class="font-vintage text-2xl font-bold text-brand-olive my-2">$50 USD</p>
+                        <p class="text-stone-600 text-sm">
+                            Para cambios de aceite, bujías, filtros o parches de neumáticos esenciales para la durabilidad del Suzuki.
+                        </p>
+                    </div>
+                    <button onclick="supportAlert('Mantenimiento')" class="mt-6 w-full bg-brand-olive hover:bg-brand-oliveDark text-white font-bold py-2.5 rounded-xl transition-all">
+                        Aportar Repuesto
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Sponsor Logos / Collaborators Banner -->
+            <div class="bg-white border-2 border-brand-oliveDark/20 rounded-2xl p-6 text-center">
+                <span class="text-xs font-bold text-stone-500 uppercase tracking-widest block mb-4">Marcas y Aliados que Confían en la Expedición</span>
+                <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-75 font-vintage font-bold text-lg text-stone-700">
+                    <span class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-compass mr-1"></i> Overland Outfitters</span>
+                    <span class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-wrench mr-1"></i> Classic Suzuki Parts</span>
+                    <span class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-campground mr-1"></i> Patagonia Gear</span>
+                    <span class="hover:text-brand-terracotta transition-colors"><i class="fa-solid fa-solar-panel mr-1"></i> EcoSolar Offgrid</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & Interactive Encouragement Section -->
+    <section id="contacto" class="py-16 px-4 bg-brand-vintageBg border-t border-stone-200">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+            
+            <!-- Contact / Messages Form -->
+            <div class="lg:col-span-7 bg-brand-cardBg border-2 border-brand-oliveDark p-6 sm:p-8 rounded-3xl vintage-shadow">
+                <span class="text-brand-terracotta font-bold text-xs tracking-widest uppercase"><i class="fa-solid fa-envelope"></i> Radiograma de Ruta</span>
+                <h3 class="font-vintage text-2xl sm:text-3xl font-bold text-brand-darkText mt-1 mb-4">¡Envía un Mensaje de Aliento!</h3>
+                <p class="text-stone-600 text-sm mb-6">
+                    ¿Tienes recomendaciones de ruta, un taller amigo en el camino o simplemente quieres mandar buenas vibras? ¡Escríbenos!
+                </p>
+
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Tu Nombre</label>
+                            <input type="text" required placeholder="Ej. Valeria Aventura" class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Ubicación / Ciudad</label>
+                            <input type="text" placeholder="Ej. Mendoza, Argentina" class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Tu Mensaje</label>
+                        <textarea rows="4" required placeholder="¡Mucha suerte en el paso por Centroamérica! Si pasan por..." class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveDark text-white font-bold py-3.5 rounded-xl vintage-shadow transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje a la Tripulación
+                    </button>
+                </form>
+
+                <div id="formSuccessMessage" class="hidden mt-4 p-4 bg-emerald-100 border border-emerald-400 text-emerald-800 rounded-xl text-sm font-semibold text-center">
+                    🎉 ¡Mensaje recibido! Nos alegra mucho leerte en la ruta.
+                </div>
+            </div>
+
+            <!-- Social Links & Newsletter -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
+                
+                <!-- Social Networks Card -->
+                <div class="bg-brand-sand border-2 border-brand-oliveDark p-6 rounded-3xl vintage-shadow">
+                    <h4 class="font-vintage text-xl font-bold text-brand-darkText mb-2">Sigue el Viaje Día a Día</h4>
+                    <p class="text-stone-700 text-sm mb-4">Publicamos videos, reels y fotos en tiempo real en nuestras redes oficiales:</p>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
+                            <i class="fa-brands fa-youtube text-red-600 text-xl"></i>
+                            <span class="font-bold text-xs">YouTube</span>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
+                            <i class="fa-brands fa-instagram text-pink-600 text-xl"></i>
+                            <span class="font-bold text-xs">Instagram</span>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
+                            <i class="fa-brands fa-tiktok text-black text-xl"></i>
+                            <span class="font-bold text-xs">TikTok</span>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
+                            <i class="fa-brands fa-facebook text-blue-600 text-xl"></i>
+                            <span class="font-bold text-xs">Facebook</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Newsletter Subscription -->
+                <div class="bg-brand-cardBg border-2 border-brand-ochre p-6 rounded-3xl vintage-shadow-orange">
+                    <h4 class="font-vintage text-xl font-bold text-brand-darkText mb-1"><i class="fa-solid fa-newspaper text-brand-ochre mr-1"></i> Boletín de la Rutas</h4>
+                    <p class="text-stone-600 text-xs mb-4">Recibe un resumen mensual con el mapa de avance, anécdotas inéditas y fotos exclusivas.</p>
+                    
+                    <div class="flex gap-2">
+                        <input type="email" placeholder="tu@correo.com" class="px-3 py-2 rounded-xl border border-stone-300 focus:outline-none text-sm w-full">
+                        <button onclick="subscribeNewsletter()" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white font-bold px-4 py-2 rounded-xl text-xs whitespace-nowrap">
+                            Suscribirme
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-darkText text-brand-sand py-10 px-4 border-t-4 border-brand-terracotta">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <span class="font-vintage text-2xl font-bold text-white tracking-widest block">FORASTERO EN AMÉRICA</span>
+                <p class="text-xs text-stone-400 mt-1">Expedición Overland Ushuaia ➔ Alaska en Suzuki ST90 (1979)</p>
+            </div>
+            
+            <div class="text-xs text-stone-400 text-center md:text-right">
+                <p>© 2026 Forastero en América. Todos los derechos reservados.</p>
+                <p class="mt-1 text-brand-ochre">Hecho con <i class="fa-solid fa-heart text-brand-terracotta"></i> para la comunidad viajera de todo el mundo.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Reading Modal -->
+    <div id="readModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-brand-cardBg border-2 border-brand-oliveDark rounded-3xl p-6 sm:p-8 max-w-lg w-full vintage-shadow relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-stone-500 hover:text-brand-terracotta text-2xl font-bold">&times;</button>
+            <span class="text-xs font-bold text-brand-terracotta uppercase tracking-wider block mb-1">Entrada de Bitácora</span>
+            <h3 id="modalTitle" class="font-vintage text-2xl font-bold text-brand-darkText mb-3">Título</h3>
+            <p id="modalBody" class="text-stone-700 text-sm leading-relaxed mb-6">Contenido de la entrada...</p>
+            <button onclick="closeModal()" class="w-full bg-brand-olive text-white font-bold py-2.5 rounded-xl">Cerrar Lectura</button>
+        </div>
     </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        // Mobile Navigation Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Stage Filter for Map Timeline
+        function filterStage(category) {
+            const buttons = document.querySelectorAll('.stage-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-brand-olive', 'text-white', 'active');
+                btn.classList.add('bg-white', 'text-stone-700');
+            });
+            event.currentTarget.classList.add('bg-brand-olive', 'text-white', 'active');
+            event.currentTarget.classList.remove('bg-white', 'text-stone-700');
+
+            const cards = document.querySelectorAll('.stage-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Vehicle Specs Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('text-brand-terracotta', 'border-brand-terracotta');
+                btn.classList.add('text-stone-500', 'border-transparent');
+            });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            document.getElementById(`tab-${tabName}`).classList.add('text-brand-terracotta', 'border-brand-terracotta');
+            document.getElementById(`tab-${tabName}`).classList.remove('text-stone-500', 'border-transparent');
+            document.getElementById(`content-${tabName}`).classList.remove('hidden');
+        }
+
+        // Honk Interactive Sound Effect simulation
+        function triggerHonk() {
+            const msg = document.getElementById('honkMessage');
+            msg.classList.remove('opacity-0');
+            setTimeout(() => {
+                msg.classList.add('opacity-0');
+            }, 2000);
+        }
+
+        // Blog Filter
+        function filterBlog(category) {
+            document.querySelectorAll('.blog-tab').forEach(tab => {
+                tab.classList.remove('bg-brand-olive', 'text-white');
+                tab.classList.add('bg-stone-200', 'text-stone-700');
+            });
+            event.currentTarget.classList.add('bg-brand-olive', 'text-white');
+            event.currentTarget.classList.remove('bg-stone-200', 'text-stone-700');
+
+            document.querySelectorAll('.blog-post').forEach(post => {
+                if (category === 'all' || post.classList.contains(category)) {
+                    post.style.display = 'flex';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
+
+        // Support Modal Alert
+        function supportAlert(tier) {
+            alert(`¡Gracias por querer sumarte con "${tier}"! En una implementación en vivo aquí se desplegaría la pasarela de pago (MercadoPago / Cafecito / PayPal / Patreon).`);
+        }
+
+        // Modal Logic
+        function openModal(title, text) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = text;
+            document.getElementById('readModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('readModal').classList.add('hidden');
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            document.getElementById('contactForm').reset();
+            const successMsg = document.getElementById('formSuccessMessage');
+            successMsg.classList.remove('hidden');
+            setTimeout(() => {
+                successMsg.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Newsletter Handler
+        function subscribeNewsletter() {
+            alert('¡Gracias por suscribirte al Boletín de la Ruta del Forastero!');
+        }
+    </script>
 </body>
 </html>
