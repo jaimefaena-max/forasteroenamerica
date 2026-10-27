@@ -1,0 +1,5 @@
+# No publicar el tooling de build como assets estáticos de Cloudflare
+tools
+node_modules
+.gitignore
+.gitattributes

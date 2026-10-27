@@ -1,0 +1,11 @@
+{
+  "name": "forasteroenamerica",
+  "private": true,
+  "description": "Tooling para compilar ../../styles.css con Tailwind CLI. Vive fuera de la raíz para que el build de Cloudflare vea un sitio estático puro.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i input.css -o ../../styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

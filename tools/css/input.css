@@ -1,0 +1,70 @@
+/* Fuentes auto-alojadas (subconjunto latin, mismos archivos que servía Google Fonts; licencias en fonts/). */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('fonts/montserrat-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Caveat';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url('fonts/caveat-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Special Elite';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/special-elite-latin-400-normal.woff2') format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Antes en un <style> inline: van en components para que las utilidades sigan ganando, como con el CDN. */
+@layer components {
+    .vintage-shadow {
+        box-shadow: 5px 5px 0px 0px rgba(74, 93, 54, 0.8);
+    }
+    .vintage-shadow-orange {
+        box-shadow: 5px 5px 0px 0px #C85A32;
+    }
+    .bg-grid-pattern {
+        background-image: radial-gradient(#C85A32 0.75px, transparent 0.75px);
+        background-size: 16px 16px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #F4E8C1;
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #C85A32;
+        border-radius: 4px;
+    }
+
+    /* Iconos SVG inline con la misma caja que tenía el <i> de la webfont de Font Awesome:
+       alto = line-height (1lh), glifo de 1em centrado y su base 0.125em bajo la línea de texto. */
+    .fa-ico {
+        display: inline-flex;
+        align-items: center;
+        height: 1lh;
+        line-height: 1;
+        vertical-align: -0.125em;
+        font-style: normal;
+    }
+    .fa-ico > svg {
+        flex: none;
+        height: 1em;
+        width: auto;
+        overflow: visible;
+        fill: currentColor;
+    }
+}

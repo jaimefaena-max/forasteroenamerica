@@ -1,0 +1,15 @@
+# Cabeceras de Cloudflare Pages (https://developers.cloudflare.com/pages/configuration/headers/)
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Strict-Transport-Security: max-age=31536000
+
+# Fuentes: nombre estable, contenido fijo. Si se cambian, cambiar también el nombre del archivo.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS sin hash en el nombre: caché corta para que un cambio llegue en minutos.
+/styles.css
+  Cache-Control: public, max-age=3600
