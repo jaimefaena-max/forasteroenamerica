@@ -26,4 +26,22 @@
         background: #C85A32;
         border-radius: 4px;
     }
+
+    /* Iconos SVG inline con la misma caja que tenía el <i> de la webfont de Font Awesome:
+       alto = line-height (1lh), glifo de 1em centrado y su base 0.125em bajo la línea de texto. */
+    .fa-ico {
+        display: inline-flex;
+        align-items: center;
+        height: 1lh;
+        line-height: 1;
+        vertical-align: -0.125em;
+        font-style: normal;
+    }
+    .fa-ico > svg {
+        flex: none;
+        height: 1em;
+        width: auto;
+        overflow: visible;
+        fill: currentColor;
+    }
 }
