@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 // Misma configuración que antes vivía en el <script> del CDN de Tailwind.
 module.exports = {
-  content: ['./index.html'],
+  content: ['../../index.html'],
   theme: {
     extend: {
       colors: {

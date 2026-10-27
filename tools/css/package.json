@@ -1,9 +1,9 @@
 {
   "name": "forasteroenamerica",
   "private": true,
-  "description": "Sitio est√°tico de Forastero en Am√©rica. Solo el CSS se compila; el HTML se publica tal cual.",
+  "description": "Tooling para compilar ../../styles.css con Tailwind CLI. Vive fuera de la raÌz para que el build de Cloudflare vea un sitio est·tico puro.",
   "scripts": {
-    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o styles.css --minify"
+    "build:css": "tailwindcss -c tailwind.config.js -i input.css -o ../../styles.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "3.4.17"
