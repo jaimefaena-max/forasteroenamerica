@@ -105,7 +105,6 @@
             <a href="#vehiculo" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-van-shuttle text-brand-terracotta w-6"></i> El Suzuki ST90</a>
             <a href="#bitacora" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-book-open text-brand-terracotta w-6"></i> Bitácora de Viaje</a>
             <a href="#apoyar" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-gas-pump text-brand-terracotta w-6"></i> Apoyar la Expedición</a>
-            <a href="#contacto" class="mobile-link flex items-center py-2 px-3 hover:bg-brand-vintageBg rounded-lg"><i class="fa-solid fa-paper-plane text-brand-terracotta w-6"></i> Contacto</a>
         </div>
     </nav>
 
@@ -661,89 +660,6 @@
         </div>
     </section>
 
-    <!-- Social & Interactive Encouragement Section -->
-    <section id="contacto" class="py-16 px-4 bg-brand-vintageBg border-t border-stone-200">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
-            
-            <!-- Contact / Messages Form -->
-            <div class="lg:col-span-7 bg-brand-cardBg border-2 border-brand-oliveDark p-6 sm:p-8 rounded-3xl vintage-shadow">
-                <span class="text-brand-terracotta font-bold text-xs tracking-widest uppercase"><i class="fa-solid fa-envelope"></i> Radiograma de Ruta</span>
-                <h3 class="font-vintage text-2xl sm:text-3xl font-bold text-brand-darkText mt-1 mb-4">¡Envía un Mensaje de Aliento!</h3>
-                <p class="text-stone-600 text-sm mb-6">
-                    ¿Tienes recomendaciones de ruta, un taller amigo en el camino o simplemente quieres mandar buenas vibras? ¡Escríbenos!
-                </p>
-
-                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Tu Nombre</label>
-                            <input type="text" required placeholder="Ej. Valeria Aventura" class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Ubicación / Ciudad</label>
-                            <input type="text" placeholder="Ej. Mendoza, Argentina" class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-stone-700 uppercase mb-1">Tu Mensaje</label>
-                        <textarea rows="4" required placeholder="¡Mucha suerte en el paso por Centroamérica! Si pasan por..." class="w-full px-4 py-3 rounded-xl border-2 border-stone-300 focus:border-brand-terracotta focus:outline-none bg-brand-vintageBg text-sm"></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-brand-olive hover:bg-brand-oliveDark text-white font-bold py-3.5 rounded-xl vintage-shadow transition-all flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-paper-plane"></i> Enviar Mensaje a la Tripulación
-                    </button>
-                </form>
-
-                <div id="formSuccessMessage" class="hidden mt-4 p-4 bg-emerald-100 border border-emerald-400 text-emerald-800 rounded-xl text-sm font-semibold text-center">
-                    🎉 ¡Mensaje recibido! Nos alegra mucho leerte en la ruta.
-                </div>
-            </div>
-
-            <!-- Social Links & Newsletter -->
-            <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-                
-                <!-- Social Networks Card -->
-                <div class="bg-brand-sand border-2 border-brand-oliveDark p-6 rounded-3xl vintage-shadow">
-                    <h4 class="font-vintage text-xl font-bold text-brand-darkText mb-2">Sigue el Viaje Día a Día</h4>
-                    <p class="text-stone-700 text-sm mb-4">Publicamos videos, reels y fotos en tiempo real en nuestras redes oficiales:</p>
-                    
-                    <div class="grid grid-cols-2 gap-3">
-                        <a href="https://youtube.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
-                            <i class="fa-brands fa-youtube text-red-600 text-xl"></i>
-                            <span class="font-bold text-xs">YouTube</span>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
-                            <i class="fa-brands fa-instagram text-pink-600 text-xl"></i>
-                            <span class="font-bold text-xs">Instagram</span>
-                        </a>
-                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
-                            <i class="fa-brands fa-tiktok text-black text-xl"></i>
-                            <span class="font-bold text-xs">TikTok</span>
-                        </a>
-                        <a href="https://facebook.com" target="_blank" rel="noopener" class="flex items-center gap-3 p-3 bg-white border border-stone-300 rounded-xl hover:border-brand-terracotta transition-colors">
-                            <i class="fa-brands fa-facebook text-blue-600 text-xl"></i>
-                            <span class="font-bold text-xs">Facebook</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Newsletter Subscription -->
-                <div class="bg-brand-cardBg border-2 border-brand-ochre p-6 rounded-3xl vintage-shadow-orange">
-                    <h4 class="font-vintage text-xl font-bold text-brand-darkText mb-1"><i class="fa-solid fa-newspaper text-brand-ochre mr-1"></i> Boletín de la Rutas</h4>
-                    <p class="text-stone-600 text-xs mb-4">Recibe un resumen mensual con el mapa de avance, anécdotas inéditas y fotos exclusivas.</p>
-                    
-                    <div class="flex gap-2">
-                        <input type="email" placeholder="tu@correo.com" class="px-3 py-2 rounded-xl border border-stone-300 focus:outline-none text-sm w-full">
-                        <button onclick="subscribeNewsletter()" class="bg-brand-terracotta hover:bg-brand-terracottaDark text-white font-bold px-4 py-2 rounded-xl text-xs whitespace-nowrap">
-                            Suscribirme
-                        </button>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-brand-darkText text-brand-sand py-10 px-4 border-t-4 border-brand-terracotta">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -862,22 +778,6 @@
 
         function closeModal() {
             document.getElementById('readModal').classList.add('hidden');
-        }
-
-        // Form Submit Handler
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            document.getElementById('contactForm').reset();
-            const successMsg = document.getElementById('formSuccessMessage');
-            successMsg.classList.remove('hidden');
-            setTimeout(() => {
-                successMsg.classList.add('hidden');
-            }, 4000);
-        }
-
-        // Newsletter Handler
-        function subscribeNewsletter() {
-            alert('¡Gracias por suscribirte al Boletín de la Ruta del Forastero!');
         }
     </script>
 </body>
