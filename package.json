@@ -1,0 +1,11 @@
+{
+  "name": "forasteroenamerica",
+  "private": true,
+  "description": "Sitio estático de Forastero en América. Solo el CSS se compila; el HTML se publica tal cual.",
+  "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i src/input.css -o styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
+  }
+}

@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Antes en un <style> inline: van en components para que las utilidades sigan ganando, como con el CDN. */
+@layer components {
+    .vintage-shadow {
+        box-shadow: 5px 5px 0px 0px rgba(74, 93, 54, 0.8);
+    }
+    .vintage-shadow-orange {
+        box-shadow: 5px 5px 0px 0px #C85A32;
+    }
+    .bg-grid-pattern {
+        background-image: radial-gradient(#C85A32 0.75px, transparent 0.75px);
+        background-size: 16px 16px;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+        height: 8px;
+        width: 8px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: #F4E8C1;
+        border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #C85A32;
+        border-radius: 4px;
+    }
+}
